@@ -1,0 +1,111 @@
+﻿@model IEnumerable<MgMarmore.Site.ViewModels.ItemViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Itens";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Novo Item</a>
+</p>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>           
+            <th>
+                @Html.DisplayNameFor(model => model.Saia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Frontao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profundidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Borda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tampao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rodape)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RodapeComprimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RodapeTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetroQuadradoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeItens)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Saia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Frontao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profundidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Borda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tampao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rodape)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RodapeComprimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RodapeTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetroQuadradoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeItens)
+            </td>
+            <td>
+                @item.ValorUnitario.ToString("C")
+            </td>
+            <td>
+                @item.ValorTotal.ToString("C")
+            </td>
+            <td class="text-right">
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search"></spam></a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

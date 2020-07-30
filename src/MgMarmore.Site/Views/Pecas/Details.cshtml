@@ -1,0 +1,48 @@
+﻿@model MgMarmore.Site.ViewModels.PecaViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PecaViewModel</h4>
+    <hr />
+    <dl class="row">      
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LarguraPeca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LarguraPeca)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApoioLargura)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApoioLargura)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComprimentoPeca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComprimentoPeca)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApoioComprimento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApoioComprimento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetroQuadradoPeca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetroQuadradoPeca)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Id"><spam class="fa fa-pencil-alt"></spam></a>
+    <a asp-action="Index">Back to List</a>
+</div>

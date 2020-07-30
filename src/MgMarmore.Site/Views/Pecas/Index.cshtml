@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MgMarmore.Site.ViewModels.PecaViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Peças";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Nova Peça</a>
+</p>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>         
+
+            <th>
+                @Html.DisplayNameFor(model => model.LarguraPeca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApoioLargura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprimentoPeca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApoioComprimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetroQuadradoPeca)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.LarguraPeca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApoioLargura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComprimentoPeca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApoioComprimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetroQuadradoPeca)
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search"></spam></a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

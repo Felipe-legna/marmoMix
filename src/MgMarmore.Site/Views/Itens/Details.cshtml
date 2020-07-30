@@ -1,0 +1,97 @@
+﻿@model MgMarmore.Site.ViewModels.ItemViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ItemViewModel</h4>
+    <hr />
+    <dl class="row">        
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Saia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Saia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Frontao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Frontao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Profundidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Profundidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Borda)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Borda)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tampao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tampao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rodape)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rodape)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RodapeComprimento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RodapeComprimento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RodapeTotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RodapeTotal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MetroQuadradoTotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MetroQuadradoTotal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QuantidadeItens)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QuantidadeItens)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.ValorUnitario.ToString("C")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.ValorTotal.ToString("C")
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Id"><spam class="fa fa-pencil-alt"></spam></a>
+    <a asp-action="Index">Back to List</a>
+</div>
