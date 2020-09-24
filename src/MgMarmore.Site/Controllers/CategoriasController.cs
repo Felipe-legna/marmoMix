@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace MgMarmore.Site.Controllers
 {
-    public class CategoriasController : BaseController
+    public class CategoriasProdutoController : BaseController
     {
         
-        private readonly ICategoriaRepository _contexto;
+        private readonly ICategoriaProdutoRepository _contexto;
         private readonly IMapper _mapper;
-        private readonly ICategoriaService _categoriaService;
+        private readonly ICategoriaProdutoService _categoriaService;
 
-        public CategoriasController(
-            ICategoriaRepository categoriaRepository, 
+        public CategoriasProdutoController(
+            ICategoriaProdutoRepository categoriaRepository, 
             IMapper mapper,
-            ICategoriaService categoriaService)
+            ICategoriaProdutoService categoriaService)
         {
             _mapper = mapper;
             _contexto = categoriaRepository;
@@ -64,7 +64,7 @@ namespace MgMarmore.Site.Controllers
             if (!ModelState.IsValid) return View(categoriaViewModel);
             
             //Criação vai ser pela classe de serviço.
-            var categoria = _mapper.Map<Categoria>(categoriaViewModel);
+            var categoria = _mapper.Map<CategoriaProduto>(categoriaViewModel);
             await _categoriaService.Adicionar(categoria);
 
             return RedirectToAction("Index");
@@ -91,7 +91,7 @@ namespace MgMarmore.Site.Controllers
 
             if (!ModelState.IsValid) return View(categoriaViewModel);
 
-            var categoria = _mapper.Map<Categoria>(categoriaViewModel);
+            var categoria = _mapper.Map<CategoriaProduto>(categoriaViewModel);
             await _categoriaService.Atualizar(categoria);
             
             return RedirectToAction("Index");

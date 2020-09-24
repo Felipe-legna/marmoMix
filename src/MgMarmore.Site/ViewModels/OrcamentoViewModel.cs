@@ -26,8 +26,8 @@ namespace MgMarmore.Site.ViewModels
         public decimal ValorTotal { get; set; }
          
         public ClienteViewModel Cliente { get; set; }
-        public IEnumerable<ItemViewModel> Itens { get; set; }
-        public IEnumerable<ProdutoViewModel> Produtos { get; set; }
-        public IEnumerable<ServicoViewModel> Servicos { get; set; }
+        //public IEnumerable<ItemViewModel> Itens { get; set; }
+        
+       // public IEnumerable<ServicoViewModel> Servicos { get; set; }
     }
 }

@@ -24,8 +24,7 @@ namespace MgMarmore.Business.Services
         public async Task Adicionar(Cliente entity)
         {
             //Validar
-            if (!ExecutarValidacao(new ClienteValidation(), entity)
-                || !ExecutarValidacao(new EnderecoValidation(), entity.Endereco)) return;
+            if (!ExecutarValidacao(new ClienteValidation(), entity)) return;
             //Executar
             await _clienteRepository.Adicionar(entity);
         }

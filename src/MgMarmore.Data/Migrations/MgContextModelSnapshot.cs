@@ -19,44 +19,7 @@ namespace MgMarmore.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MgMarmore.Business.Models.Bancada", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Categoria")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.Property<decimal>("Frontao")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<string>("Imagem")
-                        .HasColumnType("VARCHAR(200)");
-
-                    b.Property<string>("Metodo")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.Property<decimal>("MetroQuadrado")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<int>("QuantidadePecas")
-                        .HasColumnType("INT");
-
-                    b.Property<decimal>("Saia")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<Guid>("TipoItemId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TipoItemId");
-
-                    b.ToTable("Bancadas");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.Categoria", b =>
+            modelBuilder.Entity("MgMarmore.Business.Models.CategoriaMaterial", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -67,17 +30,27 @@ namespace MgMarmore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categorias");
+                    b.ToTable("CategoriasMateriais");
+                });
+
+            modelBuilder.Entity("MgMarmore.Business.Models.CategoriaProduto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoriasProdutos");
                 });
 
             modelBuilder.Entity("MgMarmore.Business.Models.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Documento")
-                        .IsRequired()
-                        .HasColumnType("varchar(14)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -89,13 +62,11 @@ namespace MgMarmore.Data.Migrations
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("varchar(12)");
-
-                    b.Property<string>("TipoCliente")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("CHAR(11)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Telefone");
 
                     b.ToTable("Clientes");
                 });
@@ -146,73 +117,12 @@ namespace MgMarmore.Data.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("MgMarmore.Business.Models.Item", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<decimal?>("Borda")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(250)");
-
-                    b.Property<decimal?>("Frontao")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<string>("ImagemItem")
-                        .HasColumnType("VARCHAR(100)");
-
-                    b.Property<decimal>("MetroQuadradoTotal")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<Guid>("OrcamentoId");
-
-                    b.Property<decimal?>("Profundidade")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<int>("QuantidadeItens")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Rodape")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<decimal?>("RodapeComprimento")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<decimal?>("RodapeTotal")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<decimal?>("Saia")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<decimal?>("Tampao")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<Guid?>("TipoItemId");
-
-                    b.Property<decimal>("ValorTotal")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<decimal>("ValorUnitario")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrcamentoId");
-
-                    b.HasIndex("TipoItemId");
-
-                    b.ToTable("Itens");
-                });
-
             modelBuilder.Entity("MgMarmore.Business.Models.Material", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("CategoriaId");
+                    b.Property<Guid>("CategoriaMaterialId");
 
                     b.Property<decimal?>("Custo")
                         .IsRequired()
@@ -230,7 +140,7 @@ namespace MgMarmore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriaId");
+                    b.HasIndex("CategoriaMaterialId");
 
                     b.ToTable("Materiais");
                 });
@@ -242,8 +152,13 @@ namespace MgMarmore.Data.Migrations
 
                     b.Property<Guid>("ClienteId");
 
-                    b.Property<string>("Observacoes")
-                        .HasColumnType("VARCHAR(300)");
+                    b.Property<DateTime>("DataCriacao")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Observacao")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(550)");
 
                     b.Property<decimal>("ValorTotal")
                         .HasColumnType("DECIMAL(10,3)");
@@ -257,77 +172,26 @@ namespace MgMarmore.Data.Migrations
 
             modelBuilder.Entity("MgMarmore.Business.Models.OrcamentoProduto", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Desconto");
+
                     b.Property<Guid>("OrcamentoId");
 
                     b.Property<Guid>("ProdutoId");
 
-                    b.HasKey("OrcamentoId", "ProdutoId");
+                    b.Property<int>("Quantidade");
+
+                    b.Property<decimal>("Valor");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrcamentoId");
 
                     b.HasIndex("ProdutoId");
 
                     b.ToTable("OrcamentosProdutos");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.OrcamentoServico", b =>
-                {
-                    b.Property<Guid>("OrcamentoId");
-
-                    b.Property<Guid>("ServicoId");
-
-                    b.HasKey("OrcamentoId", "ServicoId");
-
-                    b.HasIndex("ServicoId");
-
-                    b.ToTable("OrcamentosServicos");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.Peca", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<decimal>("AlturaDaBase");
-
-                    b.Property<string>("ApoioComprimento")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(50)");
-
-                    b.Property<string>("ApoioLargura")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(50)");
-
-                    b.Property<Guid?>("BancadaId");
-
-                    b.Property<int>("Base");
-
-                    b.Property<decimal>("ComprimentoFogaoEmbutido");
-
-                    b.Property<decimal>("ComprimentoPeca")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<Guid>("ItemId");
-
-                    b.Property<decimal>("LarguraPeca")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<Guid>("MaterialId");
-
-                    b.Property<decimal>("MetroQuadradoPeca")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.Property<decimal>("TotalComprimentoPeca");
-
-                    b.Property<decimal>("TotalLarguraPeca");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BancadaId");
-
-                    b.HasIndex("ItemId");
-
-                    b.HasIndex("MaterialId");
-
-                    b.ToTable("Pecas");
                 });
 
             modelBuilder.Entity("MgMarmore.Business.Models.Produto", b =>
@@ -335,77 +199,32 @@ namespace MgMarmore.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal?>("Custo")
-                        .IsRequired()
-                        .HasColumnType("DECIMAL(10,3)");
+                    b.Property<bool>("Ativo");
+
+                    b.Property<Guid>("CategoriaProdutoId");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("VARCHAR(250)");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("VARCHAR(250)");
 
+                    b.Property<string>("TipoProduto")
+                        .IsRequired();
+
                     b.Property<decimal>("Valor")
-                        .HasColumnType("DECIMAL(10,3)");
+                        .HasColumnType("DECIMAL(10,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriaProdutoId");
 
                     b.ToTable("Produtos");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.Servico", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(250)");
-
-                    b.Property<decimal>("Valor")
-                        .HasColumnType("DECIMAL(10,3)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Servicos");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.ServicosItens", b =>
-                {
-                    b.Property<Guid>("ServicoId");
-
-                    b.Property<Guid>("ItemId");
-
-                    b.HasKey("ServicoId", "ItemId");
-
-                    b.HasIndex("ItemId");
-
-                    b.ToTable("ServicosItens");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.TipoItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("VARCHAR(200)");
-
-                    b.Property<string>("Imagem")
-                        .HasColumnType("VARCHAR(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TiposItens");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.Bancada", b =>
-                {
-                    b.HasOne("MgMarmore.Business.Models.TipoItem", "TipoItem")
-                        .WithMany("Bancadas")
-                        .HasForeignKey("TipoItemId");
                 });
 
             modelBuilder.Entity("MgMarmore.Business.Models.Endereco", b =>
@@ -415,77 +234,36 @@ namespace MgMarmore.Data.Migrations
                         .HasForeignKey("MgMarmore.Business.Models.Endereco", "ClienteId");
                 });
 
-            modelBuilder.Entity("MgMarmore.Business.Models.Item", b =>
-                {
-                    b.HasOne("MgMarmore.Business.Models.Orcamento", "Orcamento")
-                        .WithMany("Itens")
-                        .HasForeignKey("OrcamentoId");
-
-                    b.HasOne("MgMarmore.Business.Models.TipoItem", "TipoItem")
-                        .WithMany()
-                        .HasForeignKey("TipoItemId");
-                });
-
             modelBuilder.Entity("MgMarmore.Business.Models.Material", b =>
                 {
-                    b.HasOne("MgMarmore.Business.Models.Categoria", "Categoria")
+                    b.HasOne("MgMarmore.Business.Models.CategoriaMaterial", "CategoriaMaterial")
                         .WithMany("Materiais")
-                        .HasForeignKey("CategoriaId");
+                        .HasForeignKey("CategoriaMaterialId");
                 });
 
             modelBuilder.Entity("MgMarmore.Business.Models.Orcamento", b =>
                 {
                     b.HasOne("MgMarmore.Business.Models.Cliente", "Cliente")
-                        .WithMany("Orcamentos")
+                        .WithMany()
                         .HasForeignKey("ClienteId");
                 });
 
             modelBuilder.Entity("MgMarmore.Business.Models.OrcamentoProduto", b =>
                 {
                     b.HasOne("MgMarmore.Business.Models.Orcamento", "Orcamento")
-                        .WithMany("OrcamentosProdutos")
+                        .WithMany("Itens")
                         .HasForeignKey("OrcamentoId");
 
                     b.HasOne("MgMarmore.Business.Models.Produto", "Produto")
-                        .WithMany("OrcamentosProdutos")
+                        .WithMany()
                         .HasForeignKey("ProdutoId");
                 });
 
-            modelBuilder.Entity("MgMarmore.Business.Models.OrcamentoServico", b =>
+            modelBuilder.Entity("MgMarmore.Business.Models.Produto", b =>
                 {
-                    b.HasOne("MgMarmore.Business.Models.Orcamento", "Orcamento")
-                        .WithMany("OrcamentosServicos")
-                        .HasForeignKey("OrcamentoId");
-
-                    b.HasOne("MgMarmore.Business.Models.Servico", "Servico")
-                        .WithMany("OrcamentosServicos")
-                        .HasForeignKey("ServicoId");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.Peca", b =>
-                {
-                    b.HasOne("MgMarmore.Business.Models.Bancada")
-                        .WithMany("PecasBancada")
-                        .HasForeignKey("BancadaId");
-
-                    b.HasOne("MgMarmore.Business.Models.Item", "Item")
-                        .WithMany("Pecas")
-                        .HasForeignKey("ItemId");
-
-                    b.HasOne("MgMarmore.Business.Models.Material", "Material")
-                        .WithMany("Pecas")
-                        .HasForeignKey("MaterialId");
-                });
-
-            modelBuilder.Entity("MgMarmore.Business.Models.ServicosItens", b =>
-                {
-                    b.HasOne("MgMarmore.Business.Models.Item", "Item")
-                        .WithMany("ServicosItens")
-                        .HasForeignKey("ItemId");
-
-                    b.HasOne("MgMarmore.Business.Models.Servico", "Servico")
-                        .WithMany("ServicosItens")
-                        .HasForeignKey("ServicoId");
+                    b.HasOne("MgMarmore.Business.Models.CategoriaProduto", "CategoriaProduto")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaProdutoId");
                 });
 #pragma warning restore 612, 618
         }

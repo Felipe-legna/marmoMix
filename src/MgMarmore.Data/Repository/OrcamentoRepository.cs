@@ -14,17 +14,19 @@ namespace MgMarmore.Data.Repository
         public OrcamentoRepository(MgContext db) : base(db)
         {}
 
-        public async Task<Orcamento> ObterOrcamentoClienteServicoProdutoItens(Guid id)
+        public async Task<Orcamento> ObterOrcamentoClienteServicoRevendaItens(Guid id)
         {
-            return await Db.Orcamentos.AsNoTracking()
-                .Include(o => o.Cliente)                       
-                .Include(o => o.Itens)
-                .FirstOrDefaultAsync(o => o.Id == id);
+            throw new NotImplementedException();
+            //return await Db.Orcamentos.AsNoTracking()
+            //    .Include(o => o.Cliente)                   
+
+            //    .FirstOrDefaultAsync(o => o.Id == id);
         }
 
         public async Task<IEnumerable<Orcamento>> ObterOrcamentosPorClienteAsync(Guid clienteId)
         {
-            return await Buscar(o => o.ClienteId == clienteId);
+            throw new NotImplementedException();
+            //return await Buscar(o => o.ClienteId == clienteId);
         }
     }
 }

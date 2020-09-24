@@ -1,0 +1,231 @@
+﻿@model IEnumerable<MgMarmore.Site.ViewModels.ModeloBancadaViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+@{
+    var modelo = ((System.Collections.Generic.List<MgMarmore.Site.ViewModels.ModeloBancadaViewModel>)(@Model));
+    int total = modelo.Count;
+    ModeloBancadaViewModel itemSelecionado = new ModeloBancadaViewModel();
+    var itensLinha = new List<ModeloBancadaViewModel>();
+    int linhas = 1;
+    int colunas = 3;
+}
+
+
+@for (int i = 0; i < total; i++)
+{
+    //a linha é incrementada a cada 3 elementos.
+    if (i % colunas == 0 && i != 0)
+    {
+        linhas = linhas + 1;
+    }
+
+
+    //a cada 3 elementos é formado uma nova lista.
+    if (i < linhas * colunas)
+    {
+        itensLinha.Add(modelo[i]);
+
+        if (i == ((linhas * colunas) - 1) || i == (total - 1))
+        {
+            <div class="row">
+                @foreach (var item in itensLinha)
+                {
+                    <div class="col-md-4">
+                        <div style="height:400px">
+                            <div class="card">
+                                <div class="card-body">
+                                  
+                                    <img src="~/imagens/@item.Imagem" class="card-img-top" alt="..." style="width: 100%; height: 200px;">
+                                  
+                                    <br /> <br />
+                                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Selecionar</a>
+                                  
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <br />
+            itensLinha.Clear();
+        }
+    }
+}
+
+
+
+
+@*<table class="table">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="@item.Id">
+                                        Selecionar
+                                    </button>
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Metodo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuantidadePecas)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/imagens/@item.Imagem" alt="@item.Imagem" style="width: 90px; height: 90px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Metodo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Imagem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantidadePecas)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+<div class="card-back bg-white">
+        <div class="card-body">
+            @*<h3 class="card-title">Back</h3>
+            <form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputsm">Frontao</label>
+                            <input class="form-control input-sm" id="inputsm" type="text">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputsm">Saia</label>
+                            <input class="form-control input-sm" id="inputsm" type="text">
+                        </div>
+                    </div>
+                </div>
+                @for (var t = 0; t < @item.QuantidadePecas; t++)
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputsm">Larg.</label>
+                                <input class="form-control input-sm" id="inputsm" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputsm">Comp.</label>
+                                <input class="form-control input-sm" id="inputsm" type="text">
+                            </div>
+                        </div>
+                    </div>
+                }
+            </form>
+            <a href="#" class="btn btn-outline-secondary">Action</a>
+        </div>
+    </div>*@
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="">
+
+                        @*<h3 class="card-title">Back</h3>*@
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputsm">Frontao</label>
+                                        <input class="form-control input-sm" id="inputsm" type="text" value="@modelo.">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputsm">Saia</label>
+                                        <input class="form-control input-sm" id="inputsm" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                @*@for (var t = 1; t < @item.QuantidadePecas + 1; t++)
+                                    {
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="inputsm">Larg. @t</label>
+                                                <input class="form-control input-sm" id="inputsm" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="inputsm">Comp. @t</label>
+                                                <input class="form-control input-sm" id="inputsm" type="text">
+                                            </div>
+                                        </div>
+
+
+                                    }*@
+
+                                teste
+                            </div>
+                        </form>
+                        <a href="#" class="btn btn-outline-secondary">Action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Adicionado')">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -7,7 +7,7 @@ namespace MgMarmore.Business.Models
 {
     public class Material : Entity
     {
-        public Guid CategoriaId { get; set; }
+        public Guid CategoriaMaterialId { get; set; }
 
         public string Nome { get; set; }
 
@@ -19,8 +19,7 @@ namespace MgMarmore.Business.Models
 
 
         /* EF Relations */
-        public Categoria Categoria { get; set; }
-
-        public IEnumerable<Peca> Pecas { get; set; }
+        public CategoriaMaterial CategoriaMaterial { get; set; }
+       
     }
 }

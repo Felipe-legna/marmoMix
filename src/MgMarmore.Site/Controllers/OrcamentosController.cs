@@ -34,7 +34,7 @@ namespace MgMarmore.Site.Controllers
         public async Task<IActionResult> Details(Guid id)
         {
 
-            var orcamentoViewModel = await ObterOrcamentoClienteServicoProdutoItens(id);
+            var orcamentoViewModel = await ObterOrcamentoClienteServicoRevendaItens(id);
 
             if (orcamentoViewModel == null)
             {
@@ -94,7 +94,7 @@ namespace MgMarmore.Site.Controllers
         [Route("excluir-orcamento/{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var orcamentoViewModel = await ObterOrcamentoClienteServicoProdutoItens(id);
+            var orcamentoViewModel = await ObterOrcamentoClienteServicoRevendaItens(id);
 
             if (orcamentoViewModel == null) return NotFound();
 
@@ -107,7 +107,7 @@ namespace MgMarmore.Site.Controllers
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
 
-            var orcamentoViewModel = await ObterOrcamentoClienteServicoProdutoItens(id);
+            var orcamentoViewModel = await ObterOrcamentoClienteServicoRevendaItens(id);
 
             if (orcamentoViewModel == null) return NotFound();
 
@@ -116,9 +116,9 @@ namespace MgMarmore.Site.Controllers
             return RedirectToAction("Index");
         }
 
-        private async Task<OrcamentoViewModel> ObterOrcamentoClienteServicoProdutoItens(Guid id)
+        private async Task<OrcamentoViewModel> ObterOrcamentoClienteServicoRevendaItens(Guid id)
         {
-            return _mapper.Map<OrcamentoViewModel>(await _contexto.ObterOrcamentoClienteServicoProdutoItens(id));
+            return _mapper.Map<OrcamentoViewModel>(await _contexto.ObterOrcamentoClienteServicoRevendaItens(id));
         }
 
 

@@ -15,21 +15,23 @@ namespace MgMarmore.Data.Repository
         {
         }
 
-        public async Task<Material> ObterMaterialPecas(Guid id)
-        {
-            return await Db.Materiais.AsNoTracking()
-                .Include(m => m.Pecas).FirstOrDefaultAsync();
-        }
+       
+     
 
         public async Task<Material> ObterMaterialCategoria(Guid id)
         {
             return await Db.Materiais.AsNoTracking()
-                .Include(m => m.Categoria).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(m => m.CategoriaMaterial).FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task<IEnumerable<Material>> ObterMateriaisCategoria()
         {
             return await Db.Materiais.AsNoTracking()
-                .Include(m => m.Categoria).ToListAsync();
+                .Include(m => m.CategoriaMaterial).ToListAsync();
+        }
+
+        public Task<Material> ObterMaterialPecas(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

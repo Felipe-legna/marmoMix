@@ -5,6 +5,54 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\backup\**" />
+    <Compile Remove="Models\Construtores\**" />
+    <Compile Remove="Services\Criacao de Bancadas\**" />
+    <EmbeddedResource Remove="Models\backup\**" />
+    <EmbeddedResource Remove="Models\Construtores\**" />
+    <EmbeddedResource Remove="Services\Criacao de Bancadas\**" />
+    <None Remove="Models\backup\**" />
+    <None Remove="Models\Construtores\**" />
+    <None Remove="Services\Criacao de Bancadas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\IBancadaBuilder.cs" />
+    <Compile Remove="Interfaces\IBancadaEmLService.cs" />
+    <Compile Remove="Interfaces\IBancadaEmTService.cs" />
+    <Compile Remove="Interfaces\IBancadaEmUService.cs" />
+    <Compile Remove="Interfaces\IBancadaRepository.cs" />
+    <Compile Remove="Interfaces\IBancadaRetaService.cs" />
+    <Compile Remove="Interfaces\IBancadaService.cs" />
+    <Compile Remove="Interfaces\IItem.cs" />
+    <Compile Remove="Interfaces\IItemRepository.cs" />
+    <Compile Remove="Interfaces\IItemService.cs" />
+    <Compile Remove="Interfaces\IModeloBancadaRepository.cs" />
+    <Compile Remove="Interfaces\IModeloBancadaService.cs" />
+    <Compile Remove="Interfaces\IPecaRepository.cs" />
+    <Compile Remove="Interfaces\IRevendaRepository.cs" />
+    <Compile Remove="Interfaces\IServicoRepository.cs" />
+    <Compile Remove="Interfaces\IServicoService.cs" />
+    <Compile Remove="Models\Bancada.cs" />
+    <Compile Remove="Models\Item.cs" />
+    <Compile Remove="Models\Modelo.cs" />
+    <Compile Remove="Models\OrcamentoRevenda.cs" />
+    <Compile Remove="Models\OrcamentosServicos.cs" />
+    <Compile Remove="Models\Peca.cs" />
+    <Compile Remove="Models\PedidoItem.cs" />
+    <Compile Remove="Models\Revenda.cs" />
+    <Compile Remove="Models\Servico.cs" />
+    <Compile Remove="Services\BancadaService.cs" />
+    <Compile Remove="Services\ItemService.cs" />
+    <Compile Remove="Services\ModeloService.cs" />
+    <Compile Remove="Services\ServicoService.cs" />
+    <Compile Remove="Validation\BancadaValidation.cs" />
+    <Compile Remove="Validation\ItemValidation.cs" />
+    <Compile Remove="Validation\PecaValidation.cs" />
+    <Compile Remove="Validation\ServicoValidation.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.6.2" />
   </ItemGroup>
 

@@ -8,8 +8,7 @@ namespace MgMarmore.Business.Interfaces
 {
     public interface IBancadaService
     {
-        Bancada DefinirTipoBancada(string tipoBancada, string metodoDeCriacao, decimal frontao, decimal saia, List<Peca> pecas);
-        List<TipoBancada> ObterTiposBancadas();
+        Bancada DefinirTipoBancada(string tipoBancada, Bancada bancada);
         Task Adicionar(Bancada entity);
         Task Atualizar(Bancada entity);
         Task Remover(Guid id);

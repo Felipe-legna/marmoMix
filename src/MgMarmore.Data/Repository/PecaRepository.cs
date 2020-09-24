@@ -9,12 +9,11 @@ namespace MgMarmore.Data.Repository
 {
     public class PecaRepository : Repository<Peca>, IPecaRepository
     {
-        public PecaRepository(MgContext db) : base(db){ }        
+        public PecaRepository(MgContext db) : base(db){ }
 
-        public async Task<Peca> ObterPecaPorItem(Guid itemId)
+        public Task<Peca> ObterPecaPorItem(Guid itemId)
         {
-            return await Db.Pecas.AsNoTracking()
-                .FirstOrDefaultAsync(p => p.ItemId == itemId);
+            throw new NotImplementedException();
         }
     }
 }

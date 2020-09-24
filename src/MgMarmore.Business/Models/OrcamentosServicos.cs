@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MgMarmore.Business.Models
 {
-    public class OrcamentoServico
+    public class OrcamentoServico : Entity
     {
         public Guid OrcamentoId { get; set; }
         public Orcamento Orcamento { get; set; }

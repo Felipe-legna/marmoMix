@@ -6,6 +6,52 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Administracao\Views\Bancada\**" />
+    <Compile Remove="Views\Categorias\**" />
+    <Compile Remove="Views\Clientes\**" />
+    <Compile Remove="Views\Itens\**" />
+    <Compile Remove="Views\ModeloBancada\**" />
+    <Compile Remove="Views\Pecas\**" />
+    <Compile Remove="Views\Servicos\**" />
+    <Content Remove="Areas\Administracao\Views\Bancada\**" />
+    <Content Remove="Views\Categorias\**" />
+    <Content Remove="Views\Clientes\**" />
+    <Content Remove="Views\Itens\**" />
+    <Content Remove="Views\ModeloBancada\**" />
+    <Content Remove="Views\Pecas\**" />
+    <Content Remove="Views\Servicos\**" />
+    <EmbeddedResource Remove="Areas\Administracao\Views\Bancada\**" />
+    <EmbeddedResource Remove="Views\Categorias\**" />
+    <EmbeddedResource Remove="Views\Clientes\**" />
+    <EmbeddedResource Remove="Views\Itens\**" />
+    <EmbeddedResource Remove="Views\ModeloBancada\**" />
+    <EmbeddedResource Remove="Views\Pecas\**" />
+    <EmbeddedResource Remove="Views\Servicos\**" />
+    <None Remove="Areas\Administracao\Views\Bancada\**" />
+    <None Remove="Views\Categorias\**" />
+    <None Remove="Views\Clientes\**" />
+    <None Remove="Views\Itens\**" />
+    <None Remove="Views\ModeloBancada\**" />
+    <None Remove="Views\Pecas\**" />
+    <None Remove="Views\Servicos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Administracao\Controllers\BancadaController.cs" />
+    <Compile Remove="Areas\Administracao\ViewModels\BancadaViewModel.cs" />
+    <Compile Remove="Controllers\CategoriasController.cs" />
+    <Compile Remove="Controllers\ItensController.cs" />
+    <Compile Remove="Controllers\ModeloBancadaController.cs" />
+    <Compile Remove="Controllers\OrcamentosController.cs" />
+    <Compile Remove="Controllers\PecasController.cs" />
+    <Compile Remove="Controllers\ServicosController.cs" />
+    <Compile Remove="ViewModels\ItemViewModel.cs" />
+    <Compile Remove="ViewModels\ModeloBancadaViewModel.cs" />
+    <Compile Remove="ViewModels\PecaViewModel.cs" />
+    <Compile Remove="ViewModels\ServicoViewModel.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="automapper.extensions.microsoft.dependencyinjection" Version="7.0.0" />
@@ -22,7 +68,17 @@
 
 
   <ItemGroup>
+    <Folder Include="Areas\Administracao\Data\" />
     <Folder Include="wwwroot\imagens\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Areas\Administracao\Views\Material\Create.cshtml" />
+    <None Include="Areas\Administracao\Views\Material\Delete.cshtml" />
+    <None Include="Areas\Administracao\Views\Material\Details.cshtml" />
+    <None Include="Areas\Administracao\Views\Material\Edit.cshtml" />
+    <None Include="Areas\Administracao\Views\Material\Index.cshtml" />
   </ItemGroup>
 
 </Project>

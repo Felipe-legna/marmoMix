@@ -17,9 +17,9 @@ namespace MgMarmore.Data.Mapping
                 .WithMany(si => si.ServicosItens)
                 .HasForeignKey(si => si.ServicoId);
 
-            builder.HasOne(si => si.Item)
-                .WithMany(si => si.ServicosItens)
-                .HasForeignKey(si => si.ItemId);
+            ///builder.HasOne(si => si.Item)
+                //.WithMany(si => si.ServicosItens)
+                //.HasForeignKey(si => si.ItemId);
 
             builder.ToTable("ServicosItens");
         }

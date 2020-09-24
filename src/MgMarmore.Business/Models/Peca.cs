@@ -8,11 +8,8 @@ using System.Web;
 namespace MgMarmore.Business.Models
 {
     public class Peca : Entity
-    {
-
-        public Guid ItemId { get; set; }
-
-        public Guid MaterialId { get; set; }
+    {              
+        public Guid ProdutoId { get; set; }
 
         public decimal LarguraPeca { get; set; }
 
@@ -25,8 +22,9 @@ namespace MgMarmore.Business.Models
         public TipoSustentacao ApoioComprimento { get; set; }
         
         public decimal ComprimentoFogaoEmbutido { get; set; }
-       
+        
         public TipoBase Base { get; set; }
+
         public decimal AlturaDaBase { get; set; }
 
         public decimal TotalComprimentoPeca { get; set; }
@@ -36,7 +34,7 @@ namespace MgMarmore.Business.Models
 
         /*  EF Relational */
 
-        public Item Item { get; set; }
-        public Material Material { get; set; }
+        public Produto Produto { get; set; }
+      
     }
 }

@@ -76,6 +76,45 @@ $(document).ready(function () {
         });
 
     });
+
+
+    $("#adicionar").click(function () {
+        var pecas = [];
+        for (var i = 0; i < 1; i++) {
+            var id = i + 1;
+            var largura = $("#largura-" + id).val();
+            var comprimento = $("#comprimento-" + id).val();
+            pecas.push({ "LarguraPeca": largura, "ComprimentoPeca": comprimento });
+        }
+
+        var frontao = $("#frontao").val();
+        var saia = $("#saia").val();
+        var idBancada = $("#idBancada").val();
+
+        var bancada = {
+            "Frontao": frontao,
+            "Saia": saia,
+            "Pecas": pecas
+        };
+
+        $.ajax({
+            url: "/adicionar-bancada/" + idBancada,
+            type: "POST",
+            dataType: "json",
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            data: bancada,
+            success: function (data) {
+                alert("Adicionado com sucesso");
+
+            },
+            error: function (xhr, err) {
+                alert("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+                alert("responseText: " + xhr.responseText);
+            }
+        });
+
+    });
+    
 });
 
 
@@ -102,3 +141,56 @@ function getFormData($form) {
 
     return indexed_array;
 }
+
+function AdicionarBancada(quantidadePecas) {
+    
+    var pecas = [];
+    for (var i = 0; i < quantidadePecas; i++) {
+        var id = i+1;
+        var largura = $("#largura-" + id).val();
+        var comprimento = $("#comprimento-" + id).val();
+        pecas.push({ "LarguraPeca": largura, "ComprimentoPeca": comprimento });
+    }
+
+    var frontao = $("#frontao").val();
+    var saia = $("#saia").val();
+
+
+    var data = {
+        "Frontao": frontao,
+        "Saia": saia,
+        "Pecas": pecas
+    };
+
+
+    //$.ajax({
+    //    url: '/Modelo/adicionar-modelo',
+    //    type: 'GET',
+    //    data: { 'categoriaId': id },
+    //    success: function (response) {
+    //        for (var i = 0; i < response.length; i++) {
+    //            $("#material").append("<option id=" + response[i].Id + " value=" + response[i].Valor + ">" + response[i].Nome + "</option>");
+    //        }
+    //        $("#valorMaterial").val(formataTela(response[0].Valor));
+    //    },
+    //    error: function (error) {
+    //        $(this).remove();
+    //    }
+    //});
+
+
+    $.ajax({
+        type: "POST",
+        url: "/modelo/adicionar-modelo",
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        //dataType: "json",
+        success: function (msg) {
+            // Replace the div's content with the page method's return.
+            $("#Result").text(msg.d);
+        }
+    });
+    
+}
+
+

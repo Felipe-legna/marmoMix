@@ -7,9 +7,9 @@ using System.Text;
 
 namespace MgMarmore.Data.Mapping
 {
-    public class ModeloMapping : IEntityTypeConfiguration<Modelo>
+    public class ModeloMapping : IEntityTypeConfiguration<ModeloBancada>
     {
-        public void Configure(EntityTypeBuilder<Modelo> builder)
+        public void Configure(EntityTypeBuilder<ModeloBancada> builder)
         {
             builder.HasKey(b => b.Id);
 

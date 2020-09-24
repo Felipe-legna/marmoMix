@@ -7,8 +7,8 @@ namespace MgMarmore.Business.Models
 {
     public class Bancada :Entity
     {   
-        public Guid TipoItemId { get; set; }
-       
+        public Guid ProdutoId { get; set; }       
+
         public TipoBancada Categoria { get; set; }
         public decimal Frontao { get; set; }
         public decimal Saia { get; set; }
@@ -18,7 +18,7 @@ namespace MgMarmore.Business.Models
         public decimal MetroQuadrado { get; set; }
 
 
-       public TipoItem TipoItem { get; set; }
-       public List<Peca> PecasBancada { get; set; }
+       public Produto  Produto { get; set; }
+       public List<Peca> Pecas { get; set; }
     }
 }

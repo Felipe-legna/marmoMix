@@ -1,6 +1,5 @@
 ﻿using MgMarmore.Business.Interfaces;
 using MgMarmore.Business.Models;
-using MgMarmore.Business.Validation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,37 +9,39 @@ namespace MgMarmore.Business.Services
 {
     public class ProdutoService : BaseService, IProdutoService
     {
-        private readonly IProdutoRepository _produtoRepository;
+        private readonly IProdutoRepository _ProdutoRepository;
 
-        public ProdutoService(IProdutoRepository produtoRepository, 
+        public ProdutoService(IProdutoRepository ProdutoRepository,
             INotificador notificador) : base(notificador)
         {
-            _produtoRepository = produtoRepository;
+            _ProdutoRepository = ProdutoRepository;
         }
-
         public async Task Adicionar(Produto entity)
         {
             //Validar
-            if (!ExecutarValidacao(new ProdutoValidation(), entity)) return;
+            //if (!ExecutarValidacao(new ProdutoValidation(), entity)) return;
             //Executar
-            await _produtoRepository.Adicionar(entity);
+            await _ProdutoRepository.Adicionar(entity);
         }
 
         public async Task Atualizar(Produto entity)
         {
             //Validar
-            if (!ExecutarValidacao(new ProdutoValidation(), entity)) return;
+            //if (!ExecutarValidacao(new ProdutoValidation(), entity)) return;
             //Executar
-            await _produtoRepository.Atualizar(entity);
+            await _ProdutoRepository.Atualizar(entity); ;
         }
-        
+
+
         public async Task Remover(Guid id)
         {
-            await _produtoRepository.Remover(id);
+            await _ProdutoRepository.Remover(id);
         }
+
         public void Dispose()
         {
-            _produtoRepository?.Dispose();
+            _ProdutoRepository?.Dispose();
         }
+
     }
 }

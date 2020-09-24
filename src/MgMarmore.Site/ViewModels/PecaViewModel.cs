@@ -47,6 +47,6 @@ namespace MgMarmore.Site.ViewModels
 
         public ItemViewModel Item { get; set; }
 
-        public BancadaViewModel Bancada { get; set; }
+        
     }
 }

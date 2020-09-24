@@ -8,6 +8,6 @@ namespace MgMarmore.Business.Interfaces
     public interface IOrcamentoRepository : IRepository<Orcamento>
     {
         Task<IEnumerable<Orcamento>> ObterOrcamentosPorClienteAsync(Guid clienteId);
-        Task<Orcamento> ObterOrcamentoClienteServicoProdutoItens(Guid id);        
+        Task<Orcamento> ObterOrcamentoClienteServicoRevendaItens(Guid id);        
     }
 }

@@ -16,14 +16,14 @@ namespace MgMarmore.Data.Repository
         public async Task<Item> ObterItemServicosPecas(Guid id)
         {
             return await Db.Itens.AsNoTracking()                      
-                        .Include(i => i.Pecas)                        
+                        //.Include(i => i.Pecas)                        
                         .FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<Item> ObterItemServicosPecasMaterial(Guid id)
         {
             return await Db.Itens.AsNoTracking()                        
-                        .Include(i => i.Pecas)                        
+                        //.Include(i => i.Pecas)                        
                         .FirstOrDefaultAsync(i => i.Id == id);
         }        
     }

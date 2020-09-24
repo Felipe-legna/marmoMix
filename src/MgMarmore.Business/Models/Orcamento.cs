@@ -9,14 +9,16 @@ namespace MgMarmore.Business.Models
     public class Orcamento : Entity
     {
         public Guid ClienteId { get; set; }
-        public string Observacoes { get; set; }
-        public decimal ValorTotal { get; set; }   
-
-        /* EF Relational */
         public Cliente Cliente { get; set; }
-        public IEnumerable<Item> Itens { get; set; }    
-        public IEnumerable<OrcamentoProduto> OrcamentosProdutos { get; set; }
-        public IEnumerable<OrcamentoServico> OrcamentosServicos { get; set; }
+
+        public DateTime DataCriacao { get; set; }
+        
+        public decimal ValorTotal { get; set; }     
+
+        public string Observacao { get; set; }
+
+     
+        public IEnumerable<OrcamentoProduto> Itens { get; set; }
 
     }
 }

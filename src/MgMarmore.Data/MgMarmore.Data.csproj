@@ -5,6 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mapping\BancadaMapping.cs" />
+    <Compile Remove="Mapping\ItemMapping.cs" />
+    <Compile Remove="Mapping\ModeloMapping.cs" />
+    <Compile Remove="Mapping\OrcamentosRevendasMapping.cs" />
+    <Compile Remove="Mapping\OrcamentosServicosMapping.cs" />
+    <Compile Remove="Mapping\PecaMapping.cs" />
+    <Compile Remove="Mapping\RevendaMapping.cs" />
+    <Compile Remove="Mapping\ServicoMapping.cs" />
+    <Compile Remove="Mapping\ServicosItensMapping.cs" />
+    <Compile Remove="Mapping\TipoItemMapping.cs" />
+    <Compile Remove="Migrations\20200920055331_Nova Modelagem 3.cs" />
+    <Compile Remove="Migrations\20200920055331_Nova Modelagem 3.Designer.cs" />
+    <Compile Remove="Repository\BancadaRepository.cs" />
+    <Compile Remove="Repository\ItemRepository.cs" />
+    <Compile Remove="Repository\ModeloRepository.cs" />
+    <Compile Remove="Repository\PecaRepository.cs" />
+    <Compile Remove="Repository\RevendaRepository.cs" />
+    <Compile Remove="Repository\ServicoRepository.cs" />
+    <Compile Remove="Repository\TipoItemRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />

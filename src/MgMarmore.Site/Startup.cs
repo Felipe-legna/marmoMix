@@ -66,7 +66,11 @@ namespace MgMarmore.Site
                 app.UseHsts();
             }
 
+           
+            
+
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

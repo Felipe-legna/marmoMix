@@ -109,7 +109,7 @@ namespace MgMarmore.Business.Models.Construtores
             {
                 _bancada.MetroQuadrado += CalculaMetroQuadrado(peca);
             }
-            _bancada.PecasBancada = _pecas;
+            _bancada.Pecas = _pecas;
             return _bancada;
         }
 

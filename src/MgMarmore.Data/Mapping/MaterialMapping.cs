@@ -25,9 +25,7 @@ namespace MgMarmore.Data.Mapping
             builder.Property(m => m.Imagem)
                 .HasColumnType("VARCHAR(200)");
 
-            builder.HasMany(m => m.Pecas)
-                .WithOne(m => m.Material)
-                .HasForeignKey(m => m.MaterialId);
+            
             
             builder.ToTable("Materiais");
         }

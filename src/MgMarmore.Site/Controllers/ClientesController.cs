@@ -11,7 +11,7 @@ using MgMarmore.Business.Interfaces;
 using AutoMapper;
 using MgMarmore.Site.ViewModels;
 
-namespace MgMarmore.Site.Controllers
+namespace MgMarmore.Site.Areas.Administracao.Controllers
 {
     public class ClientesController : BaseController
     {

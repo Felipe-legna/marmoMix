@@ -79,6 +79,6 @@ namespace MgMarmore.Site.ViewModels
         [DisplayName("Valor Total")]
         public decimal ValorTotal { get; set; }
                 
-        public MaterialViewModel Material { get; set; }
+      //  public MaterialViewModel Material { get; set; }
     }
 }

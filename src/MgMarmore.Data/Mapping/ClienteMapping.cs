@@ -9,39 +9,31 @@ namespace MgMarmore.Data.Mapping
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
 
-            builder.HasKey(p => p.Id);
+            builder.ToTable("Clientes");
 
-
-            builder.HasMany(c => c.Orcamentos)
-                .WithOne(e => e.Cliente)
-                .HasForeignKey(e => e.ClienteId);
+            builder.HasKey(p => p.Id);                                  
 
             builder.Property(c => c.Nome)
                .IsRequired()
-               .HasColumnType("varchar(100)");
-
-            builder.Property(p => p.Documento)
-               .IsRequired()
-               .HasColumnType("varchar(14)");
+               .HasColumnType("varchar(100)");           
 
             builder.Property(c => c.Email)
-                   .IsRequired()
-                   .HasColumnType("varchar(100)");
+                .IsRequired()
+                .HasColumnType("varchar(100)");
 
             builder.Property(c => c.Telefone)
-                    .IsRequired()
-                    .HasColumnType("varchar(12)");
-
-            builder.Property(c => c.TipoCliente)
-               .IsRequired()
-               .HasColumnType("varchar(100)");
+                .IsRequired()
+                .HasColumnType("CHAR(11)");
 
             builder.HasOne(c => c.Endereco)
-             .WithOne(e => e.Cliente);
-             
+                .WithOne(e => e.Cliente);
 
 
-            builder.ToTable("Clientes");
+            builder.HasIndex(c => c.Telefone);
+         
+
+
+           
         }
     }
 }

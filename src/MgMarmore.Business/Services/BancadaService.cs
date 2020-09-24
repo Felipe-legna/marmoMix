@@ -22,6 +22,8 @@ namespace MgMarmore.Business.Services
         private readonly IBancadaEmTService _bancadaEmT;
         private readonly IBancadaEmUService _bancadaEmU;
 
+        private static List<Bancada> Bancadas;
+
         public BancadaService(
                                IBancadaRepository bancadaRepository,
                                INotificador notificador, 
@@ -37,38 +39,38 @@ namespace MgMarmore.Business.Services
             _bancadaEmL = bancadaEmL;
             _bancadaEmT = bancadaEmT;
             _bancadaEmU = bancadaEmU;
+
+           Bancadas = new List<Bancada>();
         }
 
 
-        public Bancada DefinirTipoBancada(string tipoBancada, string metodoDeCriacao, decimal frontao, decimal saia, List<Peca> pecas)
+        public Bancada DefinirTipoBancada(string tipoBancada, Bancada bancada)
         {
-            Bancada bancada = null;
+            //Bancada bancada = null;
                         
             Enum.TryParse(tipoBancada, out TipoBancada tipo);
 
             switch (tipo)
             {
                 case TipoBancada.Reta:              
-                    bancada =  _bancadaReta.DefinirTipoBancada(metodoDeCriacao, frontao, saia, pecas);
+                    bancada =  _bancadaReta.DefinirTipoBancada(bancada.Metodo, bancada.Frontao, bancada.Saia, bancada.Pecas);
                     break;
                 case TipoBancada.L:
-                    bancada = _bancadaEmL.DefinirTipoBancada(metodoDeCriacao, frontao, saia, pecas);
+                    bancada = _bancadaEmL.DefinirTipoBancada(bancada.Metodo, bancada.Frontao, bancada.Saia, bancada.Pecas);
                     break;
                 case TipoBancada.T:
-                    bancada = _bancadaEmT.DefinirTipoBancada(metodoDeCriacao, frontao, saia, pecas);
+                    bancada = _bancadaEmT.DefinirTipoBancada(bancada.Metodo, bancada.Frontao, bancada.Saia, bancada.Pecas);
                     break;
                 case TipoBancada.U:
-                    bancada = _bancadaEmU.DefinirTipoBancada(metodoDeCriacao, frontao, saia, pecas);
+                    bancada = _bancadaEmU.DefinirTipoBancada(bancada.Metodo, bancada.Frontao, bancada.Saia, bancada.Pecas);
                     break;
             }
+
+            Bancadas.Add(bancada);
             return bancada;
         }
         
-        public List<TipoBancada> ObterTiposBancadas()
-        {
-           
-            return Enum.GetValues(typeof(TipoBancada)).Cast<TipoBancada>().ToList();
-        }
+        
 
 
         public async Task Adicionar(Bancada entity)
@@ -92,10 +94,10 @@ namespace MgMarmore.Business.Services
         public async Task<Bancada> ObterPorId(Guid id)
         {
             var bancada =  await _bancadaRepository.ObterPorId(id);
-            bancada.PecasBancada = new List<Peca>();
+            bancada.Pecas = new List<Peca>();
             for (var i = 0; i< bancada.QuantidadePecas; i++)
             {
-                bancada.PecasBancada.Add(new Peca());
+                bancada.Pecas.Add(new Peca());
             }
              
             return bancada;

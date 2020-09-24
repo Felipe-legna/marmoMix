@@ -31,35 +31,42 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>*@
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Cliente</a>
+                            <a class="nav-link text-dark" asp-area="Administracao" asp-controller="CategoriaMaterial" asp-action="Index">Cat. Material</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Materiais" asp-action="Index">Material</a>
+                            <a class="nav-link text-dark" asp-area="Administracao" asp-controller="CategoriaProduto" asp-action="Index">Cat. Produto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produto</a>
+                            <a class="nav-link text-dark" asp-area="Administracao" asp-controller="Material" asp-action="Index">Material</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Servicos" asp-action="Index">Serviços</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Itens" asp-action="Index">Item</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orcamentos" asp-action="Index">Orçamento</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Bancada" asp-action="Index">Bancada</a>
+                            <a class="nav-link text-dark" asp-area="Administracao" asp-controller="Produto" asp-action="Index">Produto</a>
                         </li>
                         @*<li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Pecas" asp-action="Index">Peça</a>
-                            </li>*@
+            <a class="nav-link text-dark" asp-area="" asp-controller="Servicos" asp-action="Index">Serviços</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Itens" asp-action="Index">Item</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Orcamentos" asp-action="Index">Orçamento</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Bancada" asp-action="Index">Bancada</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="ModeloBancada" asp-action="Index">Modelos Bancada</a>
+        </li>*@
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Pecas" asp-action="Index">Peça</a>
+        </li>*@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
